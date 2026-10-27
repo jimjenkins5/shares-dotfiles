@@ -7,4 +7,4 @@ ln -s "$DOTFILES_DIR/vim" "$HOME/.vim"
 
 sudo apt install -y vim
 
-echo "source $DOTFILES_DIR/home/start.sh" >> "$HOME/.bashrc"
+update-profile.sh "$DOTFILES_DIR/home/start.sh"
