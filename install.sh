@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export DOTFILES_DIR="$HOME/.config/coderv2/dotfiles"
 
-ln -s "$script_dir/vimrc" "$HOME/.vimrc"
-ln -s "$script_dir/vim" "$HOME/.vim"
+ln -s "$DOTFILES_DIR/vimrc" "$HOME/.vimrc"
+ln -s "$DOTFILES_DIR/vim" "$HOME/.vim"
 
 sudo apt install -y vim
 
-echo "source $(script_dir)/home/start.sh" >> "$HOME/.bashrc"
+echo "source $DOTFILES_DIR/home/start.sh" >> "$HOME/.bashrc"
