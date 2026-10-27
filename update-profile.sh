@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Replace the "Custom Dotfiles Integration" block in ~/.profile, or append it if missing.
 #
-# Usage: update-dotfiles-block.sh [BODY_FILE]
-#   BODY_FILE  optional file whose contents become the block body
+# Usage: update-dotfiles-block.sh [BODY_BLOCK]
+#   BODY_BLOCK  optional string whose contents become the block body
 #              (defaults to the body defined below)
 # Env:   PROFILE_FILE  target file (default: $HOME/.profile)
 
@@ -13,7 +13,7 @@ START_MARKER="# Start Custom Dotfiles Integration"
 END_MARKER="# End Custom Dotfiles Integration"
 
 if [[ $# -ge 1 ]]; then
-    BLOCK_BODY="$(<"$1")"
+    BLOCK_BODY="$1"
 else
     BLOCK_BODY="source \"$HOME/.config/coderv2/dotfiles/home/start.sh\""
 fi

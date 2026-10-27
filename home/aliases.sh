@@ -1,6 +1,3 @@
-script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "$script_dir/prompt.sh"
-
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
