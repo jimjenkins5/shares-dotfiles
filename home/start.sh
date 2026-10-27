@@ -1,3 +1,2 @@
-script_dir="$DOTFILES_DIR/home"
-source "$script_dir/prompt.sh"
-source "$script_dir/aliases.sh"
+source "$DOTFILES_DIR/home/prompt.sh"
+source "$DOTFILES_DIR/home/aliases.sh"
