@@ -12,4 +12,5 @@ fi
 
 sudo apt install -y vim
 
-$DOTFILES_DIR/update-profile.sh "source $DOTFILES_DIR/home/start.sh"$'\n'"source $HOME/.bashrc"
+$DOTFILES_DIR/update-profile.sh "$HOME/.profile" "source $HOME/.bashrc"
+$DOTFILES_DIR/update-profile.sh "$HOME/.bashrc" "source $DOTFILES_DIR/home/start.sh"
