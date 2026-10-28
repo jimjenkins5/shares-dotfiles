@@ -8,14 +8,16 @@
 
 set -euo pipefail
 
-FILE="${$1:-$HOME/.profile}"
+FILE="$HOME/.profile"
 START_MARKER="# Start Custom Dotfiles Integration"
 END_MARKER="# End Custom Dotfiles Integration"
+BLOCK_BODY="source \"$HOME/.config/coderv2/dotfiles/home/start.sh\""`
 
 if [[ $# -ge 1 ]]; then
+    FILE="$1"
+fi
+if [[ $# -ge 2 ]]; then
     BLOCK_BODY="$2"
-else
-    BLOCK_BODY="source \"$HOME/.config/coderv2/dotfiles/home/start.sh\""
 fi
 
 touch "$FILE"
