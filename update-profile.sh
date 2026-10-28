@@ -11,7 +11,7 @@ set -euo pipefail
 FILE="$HOME/.profile"
 START_MARKER="# Start Custom Dotfiles Integration"
 END_MARKER="# End Custom Dotfiles Integration"
-BLOCK_BODY="source \"$HOME/.config/coderv2/dotfiles/home/start.sh\""`
+BLOCK_BODY="source \"$HOME/.config/coderv2/dotfiles/home/start.sh\""
 
 if [[ $# -ge 1 ]]; then
     FILE="$1"
