@@ -15,5 +15,7 @@ sudo apt install -y vim
 git config --global core.editor "vim"
 git config --global push.default current
 
+pnpm completion bash > ~/completion-for-pnpm.bash
+
 $DOTFILES_DIR/update-profile.sh "$HOME/.profile" "source $HOME/.bashrc"
 $DOTFILES_DIR/update-profile.sh "$HOME/.bashrc" "source $DOTFILES_DIR/home/start.sh"
