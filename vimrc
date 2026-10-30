@@ -28,9 +28,14 @@ autocmd BufWritePre * :%s/\s\+$//e
 " PLUGIN SETUP
 " load plug
 if has("win32")
-   call plug#begin('~/vimfiles/plugged')
+  call plug#begin('~/vimfiles/plugged')
 else
-   call plug#begin('~/.vim/plugged')
+  let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+  if empty(glob(data_dir . '/autoload/plug.vim'))
+    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  endif
+  call plug#begin('~/.vim/plugged')
 endif
 
 " Set the timeout for vim-plug to be really high so YouCompleteMe will install
@@ -110,37 +115,37 @@ let g:html_indent_style = "inc"
 :let g:html_indent_inctags = "html,head,body,p,tbody,article"
 
 if &term =~ '256color'
-   " disable Background Color Erase (BCE) so that color schemes
-   " render properly when inside 256-color tmux and GNU screen.
-   " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-   set t_ut=
+  " disable Background Color Erase (BCE) so that color schemes
+  " render properly when inside 256-color tmux and GNU screen.
+  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+  set t_ut=
 endif
 
 " Set line wrapping for comments to 90 characters
 fun! AdjustWrapForLine()
-   if !exists('s:lastLine') || line('.') != s:lastLine
-      let s:lastLine = line(".")
-      let matched = matchstr(getline('.'), '^\s*\/\=\(\*\|\/\)')
+  if !exists('s:lastLine') || line('.') != s:lastLine
+    let s:lastLine = line(".")
+    let matched = matchstr(getline('.'), '^\s*\/\=\(\*\|\/\)')
 
-      if !empty(matched)
-         set textwidth=90
-         set colorcolumn=90
-      else
-         set textwidth=140
-         set colorcolumn=140
-      endif
-   endif
+    if !empty(matched)
+      set textwidth=90
+      set colorcolumn=90
+    else
+      set textwidth=140
+      set colorcolumn=140
+    endif
+  endif
 endfun
 augroup JSLineWrap
-   autocmd FileType javascript
-      \ autocmd! JSLineWrap CursorMoved * call AdjustWrapForLine()
+  autocmd FileType javascript
+    \ autocmd! JSLineWrap CursorMoved * call AdjustWrapForLine()
 augroup END
 " End of line wrapping config
 
 " Increase length of commit summary guide
 fun! AdjustGitCommitSummary()
-   syn clear gitcommitSummary
-   syn match gitcommitSummary "^.\{0,69\}" contained containedin=gitcommitFirstLine nextgroup=gitcommitOverflow contains=@Spell
+  syn clear gitcommitSummary
+  syn match gitcommitSummary "^.\{0,69\}" contained containedin=gitcommitFirstLine nextgroup=gitcommitOverflow contains=@Spell
 endfun
 autocmd FileType gitcommit call AdjustGitCommitSummary()
 " End of commit summary guide

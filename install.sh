@@ -2,15 +2,24 @@
 
 export DOTFILES_DIR="$HOME/.config/coderv2/dotfiles"
 
-if [ ! -d "$HOME/.vim" ]; then
-  ln -s "$DOTFILES_DIR/vim" "$HOME/.vim"
-fi
+mkdir -p "$HOME/.backup/dotfiles"
 
-if [ ! -f "$HOME/.vimrc" ]; then
-  ln -s "$DOTFILES_DIR/vimrc" "$HOME/.vimrc"
+if [ -d "$HOME/.vim" ]; then
+  mv "$HOME/.vim" "$HOME/.backup/dotfiles/.vim"
 fi
+ln -s "$DOTFILES_DIR/vim" "$HOME/.vim"
 
-sudo apt install -y vim
+if [ -f "$HOME/.vimrc" ]; then
+  mv "$HOME/.vimrc" "$HOME/.backup/dotfiles/.vimrc"
+fi
+ln -s "$DOTFILES_DIR/vimrc" "$HOME/.vimrc"
+
+if [ -f "$HOME/.tmux.conf" ]; then
+  mv "$HOME/.tmux.conf" "$HOME/.backup/dotfiles/.tmux.conf"
+fi
+ln -s "$DOTFILES_DIR/tmux.conf" "$HOME/.tmux.conf"
+
+sudo apt install -y vim tmux
 
 git config --global core.editor "vim"
 git config --global push.default current
