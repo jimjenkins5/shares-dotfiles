@@ -1,0 +1,16 @@
+{
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
+  "model": "opus[1m]",
+  "enableWorkflows": true,
+  "effortLevel": "medium",
+  "skipDangerousModePermissionPrompt": true,
+  "switchModelsOnFlag": false,
+  "remoteControlAtStartup": true,
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true,
+  "theme": "dark"
+}

@@ -19,6 +19,11 @@ if [ -f "$HOME/.tmux.conf" ]; then
 fi
 ln -s "$DOTFILES_DIR/tmux.conf" "$HOME/.tmux.conf"
 
+if [ -f "$HOME/.claude/settings.json" ]; then
+  mv "$HOME/.claude/settings.json" "$HOME/.backup/dotfiles/.tmux.conf"
+fi
+ln -s "$DOTFILES_DIR/claude/settings.json" "$HOME/.claude/settings.json"
+
 sudo apt install -y vim tmux
 
 git config --global core.editor "vim"
