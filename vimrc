@@ -30,7 +30,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 if has("win32")
   call plug#begin('~/vimfiles/plugged')
 else
-  # auto install plugs if they are not already installed
+  " auto install plugs if they are not already installed
   autocmd VimEnter *
   \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \|   PlugInstall --sync | q | source $MYVIMRC
